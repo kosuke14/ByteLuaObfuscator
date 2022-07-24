@@ -2,7 +2,10 @@
 
 	Simple Lua Bytecode Obfuscator
 
-	Made by M0dder / Reboy (Discord: kskreboy#4721)
+	This code is licensed under the MIT License.
+	Copyright (c) 2022 Reboy / M0dder
+
+	Made by Reboy / M0dder (Discord: kskreboy#4721)
 
 	Supported Lua Versions:
 	Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
