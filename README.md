@@ -18,7 +18,7 @@ Reboy is me.
 ## Usage
 Require the module: 
 ```lua
-local module = require("path.to.module")
+local module = require("path.to.module") -- require main.lua
 ```
 Call module with these arguments:
 ```lua
