@@ -176,6 +176,7 @@ M.crypt = function(source, options)
 	end
 	print("Obfuscating | Encrypting...")
 	local r_key = "return (function()"
+	local fv_z = ("local %s%s = \"%s\";"):format(varname, genIl("z"), varcomment)
 	local f1_a = ("local %s%s"):format(varname, genIl("a"))
 	local f2_b = ("local %s%s"):format(varname, genIl("b"))
 	local f3_c = ("local %s%s"):format(varname, genIl("c"))
@@ -214,6 +215,9 @@ M.crypt = function(source, options)
 	print("Obfuscated!")
 	return "--" .. comment .. "\n\n" ..
 		r_key ..
+		fv_z ..
+		fv_z ..
+		fv_z ..
 		f1_a .. "=" .. ("%d"):format(math.random(111,31415)/100) .. ";" ..
 		f2_b .. "=" .. ("%d"):format(math.random(111,31415)/100) .. ";" ..
 		f3_c .. "=" .. ("%d"):format(math.pi) .. ";" ..
