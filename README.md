@@ -19,7 +19,7 @@ Sorry for dirty code but it's obfuscator.
 ## Usage
 Require the module: 
 ```lua
-local module = require("path.to.module") -- require main.lua
+local module = require("path.to.module") -- require module.lua
 ```
 Call module with these arguments:
 ```lua
