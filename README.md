@@ -16,7 +16,9 @@ Sorry for dirty code but it's obfuscator.
 * Customizable variable name, variable comment, comment
 * Obfuscated code is executed internally without source code revert it's bytecode
 * Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
-## Usage
+## Non-module ver
+...
+## Usage (Module ver)
 Require the module: 
 ```lua
 local module = require("path.to.module") -- require module.lua
