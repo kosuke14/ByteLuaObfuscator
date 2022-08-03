@@ -208,7 +208,22 @@ M.crypt = function(source, options)
 		"return "..i_.."(d)" ..
 		"end"
 	local n_ = ("%s%s"):format(varname, genIl("n"))
-	local c5res = "\\"..table.concat({encsrc:byte(1,-1)},"\\")
+	local bytedsrc = nil
+	if encsrc:len() > 255 then -- handle lua byte library limit
+		local chunkedbys = {}
+		for i=1,#encsrc,255 do
+			chunkedbys[#chunkedbys+1] = {encsrc:sub(i,i+255 - 1):byte(1,-1)}
+		end
+		bytedsrc = {}
+		for i,v in pairs(chunkedbys) do
+			for i1,v1 in pairs(v) do
+				bytedsrc[#bytedsrc+1] = v1
+			end
+		end
+	else
+		bytedsrc = {encsrc:byte(1,-1)}
+	end
+	local c5res = "\\"..table.concat(bytedsrc,"\\")
 	local c5_n = ("local %s"):format(n_) .. "="..("\"%s\""):format(c5res)
 	local f9_o = ("local %s%s"):format(varname, genIl("o")) .. "=" .. ("'%s%s%s'"):format(base64.Encode(genpass(math.random(10,20))),base64.Encode(genpass(math.random(10,20))),base64.Encode(genpass(math.random(10,20))))
 	local c_end = ("return %s(%s(%s,%s),getfenv(0))()end)()"):format(k_,m_,(c1_d):sub(7),n_)--1.exe,2.c4,3.c4_a,4.c4_b
