@@ -17,8 +17,9 @@ Sorry for dirty code but it's obfuscator.
 * Obfuscated code is executed internally without source code revert it's bytecode
 * Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
 ## Non-module ver (but you need module)
+You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforwindows/releases/tag/v5.1.5-52)
 1. Download module.lua and MLoader.lua
-2. Run MLoader.lua as lua script
+2. Run MLoader.lua as lua script (cmd > `lua MLoader.lua`)
 3. Type a path to module.lua
 4. Type a path to lua file to obfuscate
 5. Type a path to new lua file to write
