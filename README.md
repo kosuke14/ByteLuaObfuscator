@@ -16,8 +16,14 @@ Sorry for dirty code but it's obfuscator.
 * Customizable variable name, variable comment, comment
 * Obfuscated code is executed internally without source code revert it's bytecode
 * Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
-## Non-module ver
-...
+## Non-module ver (but you need module)
+1. Download module.lua and MLoader.lua
+2. Run MLoader.lua as lua script
+3. Type a path to module.lua
+4. Type a path to lua file to obfuscate
+5. Type a path to new lua file to write
+6. Type some options
+7. And it will be obfuscated.
 ## Usage (Module ver)
 Require the module: 
 ```lua
