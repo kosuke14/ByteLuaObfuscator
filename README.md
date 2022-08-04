@@ -16,7 +16,7 @@ Sorry for dirty code but it's obfuscator.
 * Customizable variable name, variable comment, comment
 * Obfuscated code is executed internally without source code revert it's bytecode
 * Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
-## Non-module ver (but you need module)
+## Usage of Non-module ver (but you need module)
 You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforwindows/releases/tag/v5.1.5-52)
 1. Download module.lua and MLoader.lua
 2. Run MLoader.lua as lua script (cmd > `lua MLoader.lua`)
