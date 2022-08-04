@@ -1,6 +1,6 @@
 # ByteLuaObfuscator
 Simple Lua Bytecode-Method Obfuscator for Lua 5.1 / Luau / RBXLua. <br>
-Obfuscator for Lua 5.1 / Luau / RBXLua in Lua. <br>
+Obfuscator for Lua 5.1 (Supported Luau / RBXLua but no Luau syntax) in Lua. <br>
 Reboy is me. <br>
 Sorry for dirty code but it's obfuscator.
 ### Credits
