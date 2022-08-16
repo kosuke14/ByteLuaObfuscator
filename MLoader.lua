@@ -3,6 +3,11 @@
 	Just execute "lua MLoader.lua" to use.
 --]==]
 
+if not (_VERSION and _VERSION == "Lua 5.1" or _VERSION == "LuaJIT" or _VERSION == "Luau") then -- version check (if you have getfenv / setfenv function, you can remove this code.)
+	print("Your Lua version is not supported for this script. This script only supports Lua 5.1.")
+	return
+end -- version check end
+
 print("ByteLuaObfuscator (Github: \107\111\115\117\107\101\49\52) Loader (^C to exit)")
 print("Put a path to an obfuscator module: ")
 
