@@ -25,6 +25,29 @@ You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforw
 5. Type a path to new lua file to write
 6. Type some options
 7. And it will be obfuscated.
+## Usage (Module ver CLI Usage)
+Run this command to view help:
+```sh
+lua path/to/module.lua --cli
+```
+Help:
+```sh
+ByteLuaObfuscator
+Copyright (c) 2022 Reboy / M0dder
+
+Usage:
+lua module.lua --cli --source "<FILE_PATH>" --output "<FILE_PATH>" [..]
+
+Available Arguments:
+--cli   Run the script as CLI mode.
+--source "<FILE_PATH>"  Path to Lua script to obfuscate.
+--output "<FILE_PATH>"  Path to Lua script to output (document will be created if there isn't).
+--comment "<COMMENT>"   Comment Option.
+--varcomm "<COMMENT>"   Comment Option for lua variable value.
+--varname "<STRING>"    Lua variable name (Special characters, spaces will be replaced with underline).
+--cryptvarcomm          Encode (Decodable) comment for vartiable value.
+
+```
 ## Usage (Module ver)
 Require the module: 
 ```lua
