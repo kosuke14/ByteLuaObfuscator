@@ -19,10 +19,20 @@
 	* Minified code
 	* Customizable variable name, variable comment, comment
 	* Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
-	- Created in 1 day
+	+ new cli
 
 	How to use / Example Usage:
-
+	
+	CLI Usage:
+	
+	Command (only --cli for help):
+	lua path/to/module.lua --cli --source "<FILE_PATH>" --output "<NEWFILE_PATH>" [..]
+	
+	Example CLI:
+	lua path/to/module.lua --cli --source "C:\\mycode.lua" --output "result.lua" --comment "this code is obfuscated!"
+	
+	Lua Code:
+	
 	local module = require(path.to.module) -- this module, use require or dofile
 	module(contents: string (source code), option table: { -- optional
 		comment = "// comment", -- ex result: "--'comment'"
@@ -31,7 +41,7 @@
 		variablename = "CRYPTED", -- ex: "local 'variablename' = 'variablecomment'"
 	}): string (obfuscated source code)
 	
-	Example Code:
+	Example Lua Code:
 	
 	-- Obfuscate input.lua and write obfuscated code to result.lua
 	local codefile, cerr = io.open("input.lua",'rb')
@@ -58,6 +68,68 @@
 	- ARCFOUR implementation in pure Lua - Rob Kendrick (rjek)
 
 --]==]
+
+-- check is this cli mode
+local climode = false
+local realargs = nil
+
+if table.find == nil then
+	table.find = function(tbl,value,pos)
+		for i = pos or 1,#tbl do
+			if tbl[i] == value then
+				return i
+			end
+		end
+	end
+end
+
+if arg and type(arg) == 'table' then
+	if table.find(arg,"--cli") then
+		if not (_VERSION and _VERSION == "Lua 5.1" or _VERSION == "LuaJIT" or _VERSION == "Luau") then
+			print("Your Lua version is not supported for this script. This script only supports Lua 5.1.")
+			return
+		end
+		climode = true
+	end
+end
+
+if climode == true then
+	if #arg == 1 and arg[1] == "--cli" then
+		print(
+			"ByteLuaObfuscator" .. "\n" ..
+			"Copyright (c) 2022 Reboy / M0dder" .. "\n" ..
+			"" .. "\n" ..
+			"Usage:" .. "\n" ..
+			"lua module.lua --cli --source \"<FILE_PATH>\" --output \"<FILE_PATH>\" [..]" .. "\n" ..
+			"" .. "\n" ..
+			"Available Arguments:" .. "\n" ..
+			"--cli 	Run the script as CLI mode." .. "\n" ..
+			"--source \"<FILE_PATH>\" 	Path to Lua script to obfuscate." .. "\n" ..
+			"--output \"<FILE_PATH>\" 	Path to Lua script to output (document will be created if there isn't)." .. "\n" ..
+			"--comment \"<COMMENT>\" 	Comment Option." .. "\n" ..
+			"--varcomm \"<COMMENT>\" 	Comment Option for lua variable value." .. "\n" ..
+			"--varname \"<STRING>\" 	Lua variable name (Special characters, spaces will be replaced with underline)." .. "\n" ..
+			"--cryptvarcomm  	Encode (Decodable) comment for vartiable value." .. "\n" ..
+			"" .. "\n"
+		)
+		return
+	end
+	realargs = {}
+	local nextvargs = {"source","output","comment","varcomm","varname"}
+	local skipdexes = {}
+	for i,v in pairs(arg) do
+		if (not table.find(skipdexes,i)) or (i > 0) then
+			if v:sub(1,2) == "--" then
+				if table.find(nextvargs,v:sub(3)) then
+					realargs[v:sub(3)] = arg[i+1]
+					table.insert(skipdexes,(#skipdexes+1),(i+1))
+				else
+					realargs[v:sub(3)] = true
+				end
+			end
+		end
+	end
+end
 
 local M = {}
 
@@ -251,6 +323,43 @@ M.crypt = function(source, options)
 		f9_o .. ";" ..
 		f7_h .. ";" ..
 		c_end
+end
+
+if climode == true then
+	local rsuccess, readdfile, rerr = pcall(function()
+		return io.open(realargs.source, "rb")
+	end)
+	if rsuccess == false or readdfile == nil then
+		print("File (source file) Reading Error: " .. (rsuccess == false and readdfile or rerr or "Unknown"))
+		return
+	end
+	print(("Selected source file to \"%s\"."):format(realargs.source))
+	local wsuccess, wdfile, werr = pcall(function()
+		return io.open(realargs.output or "output.lua", "w")
+	end)
+	if wsuccess == false or wdfile == nil then
+		readdfile:close()
+		print("File (output file) Writing Error: " .. (wsuccess == false and wdfile or werr or "Unknown"))
+		return
+	end
+	print(("Selected output file to \"%s\"."):format(realargs.output or "output.lua"))
+	local clisettings = {
+		comment = realargs.comment or _settings.comment, -- --comment "string"
+		variablecomment = realargs.varcomm or _settings.variablecomment, -- --varcomm "string"
+		cryptvarcomment = realargs.cryptvarcomm or false, -- --cryptvarcomm
+		variablename = realargs.varname or _settings.variablename, -- --varname "string"
+	}
+	local starttime = os.clock()
+	print("Starting obfuscation.")
+	local kb = M.crypt(readdfile:read("*a"),clisettings) -- you need more memory if you get error at here
+	print(("Finished obfuscation in %d seconds."):format(os.clock() - starttime))
+	readdfile:close()
+	wdfile:write(kb)
+	wdfile:close()
+	kb = nil
+	print(("Obfuscated code are written to \"%s\"."):format(realargs.output or "output.lua"))
+	print("All done.")
+	return
 end
 
 return setmetatable(M, {
