@@ -1,6 +1,6 @@
 # ByteLuaObfuscator
-Simple Lua Bytecode-Method Obfuscator for Lua 5.1 / Luau / RBXLua. <br>
-Obfuscator for Lua 5.1 (Supported Luau / RBXLua but no Luau syntax) in Lua. <br>
+Simple Lua Bytecode-Method Obfuscator for Lua 5.1+ / RBXLua. <br>
+Obfuscator for Lua 5.1+ (Supported RBXLua but no Luau syntax) in Lua. <br>
 Reboy is me. <br>
 Sorry for dirty code but it's obfuscator.
 ### Credits
@@ -15,7 +15,7 @@ Sorry for dirty code but it's obfuscator.
 * Minified code
 * Customizable variable name, variable comment, comment
 * Obfuscated code is executed internally without source code revert it's bytecode
-* Executable in Lua 5.1 / Luau / RBXLua (needed getfenv & setfenv, no loadstring)
+* Executable in Lua 5.1+ / RBXLua (no loadstring)
 ## Usage of Non-module ver (but you need module)
 You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforwindows/releases/tag/v5.1.5-52)
 1. Download module.lua and MLoader.lua
