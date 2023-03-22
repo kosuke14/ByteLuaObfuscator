@@ -87,7 +87,7 @@ if table.find == nil then
 end
 
 if climode == true then
-	if #arg == 1 and arg[1] == "--help" or arg[1] == "-h" then
+	if #arg <= 1 and arg[1] == "--help" or arg[1] == "-h" or arg[1] == nil then
 		print(
 			"ByteLuaObfuscator " .. obversion .. "\n" ..
 			"Copyright (c) 2023 Reboy / M0dder" .. "\n" ..
