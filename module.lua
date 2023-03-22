@@ -3,7 +3,7 @@
 	Simple Lua Bytecode Obfuscator
 
 	This code is licensed under the MIT License.
-	Copyright (c) 2022 Reboy / M0dder
+	Copyright (c) 2023 Reboy / M0dder
 
 	Made by Reboy / M0dder (Discord: kskreboy#4721)
 
@@ -24,11 +24,11 @@
 	
 	CLI Usage:
 	
-	Command (only --cli for help):
-	lua path/to/module.lua --cli --source "<FILE_PATH>" --output "<NEWFILE_PATH>" [..]
+	Command (only --help for help):
+	lua path/to/module.lua --source "<FILE_PATH>" --output "<NEWFILE_PATH>" [..]
 	
 	Example CLI:
-	lua path/to/module.lua --cli --source "C:\\mycode.lua" --output "result.lua" --comment "this code is obfuscated!"
+	lua path/to/module.lua --source "C:\\mycode.lua" --output "result.lua" --comment "this code is obfuscated!"
 	
 	Lua Code:
 	
@@ -39,6 +39,9 @@
 		cryptvarcomment = true, -- encrypt variablecomment with bytecode ex: "a" -> "\97"
 		variablename = "CRYPTED", -- ex: "local 'variablename' = 'variablecomment'"
 	}): string (obfuscated source code)
+	
+	Common Issue:
+	lua has memory limit, so what do i do: Use luvi or srlua to convert obfuscator to binary application, limit will be up to 2gb.
 	
 	Example Lua Code:
 	
@@ -67,9 +70,10 @@
 	- ARCFOUR implementation in pure Lua - Rob Kendrick (rjek)
 
 --]==]
+local obversion = "v1.2"
 
 -- check is this cli mode
-local climode = false
+local climode = arg ~= nil and true or false
 local realargs = nil
 
 if table.find == nil then
@@ -82,23 +86,17 @@ if table.find == nil then
 	end
 end
 
-if arg and type(arg) == 'table' then
-	if table.find(arg,"--cli") then
-		climode = true
-	end
-end
-
 if climode == true then
-	if #arg == 1 and arg[1] == "--cli" then
+	if #arg == 1 and arg[1] == "--help" or arg[1] == "-h" then
 		print(
-			"ByteLuaObfuscator" .. "\n" ..
-			"Copyright (c) 2022 Reboy / M0dder" .. "\n" ..
+			"ByteLuaObfuscator " .. obversion .. "\n" ..
+			"Copyright (c) 2023 Reboy / M0dder" .. "\n" ..
 			"" .. "\n" ..
 			"Usage:" .. "\n" ..
-			"lua module.lua --cli --source \"<FILE_PATH>\" --output \"<FILE_PATH>\" [..]" .. "\n" ..
+			"lua module.lua --source \"<FILE_PATH>\" --output \"<FILE_PATH>\" [..]" .. "\n" ..
 			"" .. "\n" ..
 			"Available Arguments:" .. "\n" ..
-			"--cli 	Run the script as CLI mode." .. "\n" ..
+			"--help -h			Shows help.\n"
 			"--source \"<FILE_PATH>\" 	Path to Lua script to obfuscate." .. "\n" ..
 			"--output \"<FILE_PATH>\" 	Path to Lua script to output (document will be created if there isn't)." .. "\n" ..
 			"--comment \"<COMMENT>\" 	Comment Option." .. "\n" ..
