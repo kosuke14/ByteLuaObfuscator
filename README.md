@@ -28,7 +28,7 @@ You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforw
 ## Usage (Module ver CLI Usage)
 Run this command to view help:
 ```sh
-lua path/to/module.lua --cli
+lua path/to/module.lua
 ```
 Help:
 ```sh
@@ -36,10 +36,10 @@ ByteLuaObfuscator
 Copyright (c) 2022 Reboy / M0dder
 
 Usage:
-lua module.lua --cli --source "<FILE_PATH>" --output "<FILE_PATH>" [..]
+lua module.lua --source "<FILE_PATH>" --output "<FILE_PATH>" [..]
 
 Available Arguments:
---cli   Run the script as CLI mode.
+--help -h   Shows help.
 --source "<FILE_PATH>"  Path to Lua script to obfuscate.
 --output "<FILE_PATH>"  Path to Lua script to output (document will be created if there isn't).
 --comment "<COMMENT>"   Comment Option.
