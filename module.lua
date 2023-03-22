@@ -96,7 +96,7 @@ if climode == true then
 			"lua module.lua --source \"<FILE_PATH>\" --output \"<FILE_PATH>\" [..]" .. "\n" ..
 			"" .. "\n" ..
 			"Available Arguments:" .. "\n" ..
-			"--help -h			Shows help.\n"
+			"--help -h			Shows help.\n" ..
 			"--source \"<FILE_PATH>\" 	Path to Lua script to obfuscate." .. "\n" ..
 			"--output \"<FILE_PATH>\" 	Path to Lua script to output (document will be created if there isn't)." .. "\n" ..
 			"--comment \"<COMMENT>\" 	Comment Option." .. "\n" ..
