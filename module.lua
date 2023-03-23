@@ -68,8 +68,6 @@
 	
 	Credits:
 	- FiOne LBI (created by same author as Rerubi) - https://github.com/Rerumu/FiOne
-	- Yueliang 5 (Lua compiler in Lua) - http://yueliang.luaforge.net/
-	- Moonshine (improved version of Yueliang) - https://github.com/gamesys/moonshine
 	- ARCFOUR implementation in pure Lua - Rob Kendrick (rjek)
 
 --]==]
@@ -172,7 +170,7 @@ local resources = { -- FAKE Yueliang
 };
 
 --Resources:
--- Compiler: Yueliang(source, scriptname): luac string | Executor: FiOne(luac, env): function
+-- ~~Compiler: Yueliang(source, scriptname): luac string | Executor: FiOne(luac, env): function~~
 -- Base64: Base64.Encode(data): string | Base64.Decode(data): string
 -- "FiOneCode" loadstringable string
 -- AES: AES(key) - and something
@@ -269,7 +267,7 @@ M.crypt = function(source, options)
 	end
 	collectgarbage()
 	print("Obfuscating | Encrypting...")
-	local r_key = "return (function()"
+	local r_key = "return(function()"
 	local fv_z = ("local %s%s = \"%s\";"):format(varname, genIl("z"), varcomment)
 	local f1_a = ("local %s%s"):format(varname, genIl("a"))
 	local f2_b = ("local %s%s"):format(varname, genIl("b"))
