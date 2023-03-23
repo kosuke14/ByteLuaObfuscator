@@ -1,11 +1,11 @@
 # ByteLuaObfuscator
 Simple Lua Bytecode-Method Obfuscator for Lua 5.1+ / RBXLua. <br>
-Obfuscator for Lua 5.1+ (Supported RBXLua but no Luau syntax) in Lua. <br>
+Obfuscator for Lua 5.1 in Lua. <br>
 Reboy is me. <br>
 Sorry for dirty code but it's obfuscator.
 ### Credits
 - FiOne LBI (created by same author as Rerubi) - https://github.com/Rerumu/FiOne
-- Yueliang 5 (Lua compiler in Lua) - http://yueliang.luaforge.net/
+- ~~Yueliang 5 (Lua compiler in Lua) - http://yueliang.luaforge.net/~~
 - Moonshine (improved version of Yueliang) - https://github.com/gamesys/moonshine
 - ARCFOUR implementation in pure Lua (RC4) - https://www.rjek.com/
 ## Features
@@ -33,19 +33,19 @@ lua path/to/module.lua
 Help:
 ```sh
 ByteLuaObfuscator
-Copyright (c) 2022 Reboy / M0dder
+Copyright (c) 2023 Reboy / M0dder
 
 Usage:
-lua module.lua --source "<FILE_PATH>" --output "<FILE_PATH>" [..]
+lua module.lua -s "<FILE_PATH>" -o "<FILE_PATH>" [..]
 
 Available Arguments:
 --help -h   Shows help.
---source "<FILE_PATH>"  Path to Lua script to obfuscate.
---output "<FILE_PATH>"  Path to Lua script to output (document will be created if there isn't).
---comment "<COMMENT>"   Comment Option.
---varcomm "<COMMENT>"   Comment Option for lua variable value.
---varname "<STRING>"    Lua variable name (Special characters, spaces will be replaced with underline).
---cryptvarcomm          Encode (Decodable) comment for vartiable value.
+-s --source "<FILE_PATH>"  Path to Lua script to obfuscate.
+-o --output "<FILE_PATH>"  Path to Lua script to output (document will be created if there isn't).
+-c --comment "<COMMENT>"   Comment Option.
+-vc --varcomm "<COMMENT>"   Comment Option for lua variable value.
+-vn --varname "<STRING>"    Lua variable name (Special characters, spaces will be replaced with underline).
+-C --cryptvarcomm          Encode (Decodable) comment for vartiable value.
 
 ```
 ## Usage (Module ver)
