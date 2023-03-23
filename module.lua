@@ -377,7 +377,7 @@ if climode == true then
 	local starttime = os.clock()
 	print("Starting obfuscation.")
 	local kb = M.crypt(readdfile:read("*a"),clisettings) -- you need more memory if you get error at here
-	print(("Finished obfuscation in %d seconds."):format(os.clock() - starttime))
+	print(("Finished obfuscation in %f seconds."):format(os.clock() - starttime))
 	readdfile:close()
 	wdfile:write(kb)
 	wdfile:close()
