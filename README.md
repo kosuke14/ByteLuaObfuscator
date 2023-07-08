@@ -2,7 +2,8 @@
 Simple Lua Bytecode-Method Obfuscator for Lua 5.1+ / RBXLua. <br>
 Obfuscator for Lua 5.1 in Lua. <br>
 Reboy is me. <br>
-Sorry for dirty code but it's obfuscator.
+Sorry for dirty code but it's obfuscator. <br>
+The obfuscator does not have luau support, if you want luau support with the obfuscator, try this: [ShinyMoon](https://github.com/kosuke14/ShinyMoon)
 ### Credits
 - FiOne LBI (created by same author as Rerubi) - https://github.com/Rerumu/FiOne
 - ~~Yueliang 5 (Lua compiler in Lua) - http://yueliang.luaforge.net/~~
