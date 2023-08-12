@@ -15,7 +15,7 @@ The obfuscator does not have luau support, if you want luau support with the obf
 * Encrypt encoded code with random password
 * Minified code
 * Customizable variable name, variable comment, comment
-* Obfuscated code is executed internally without source code revert it's bytecode
+* Lua 5.1 format
 * Executable in Lua 5.1+ / RBXLua (no loadstring)
 ## Usage of Non-module ver (but you need module)
 You will need Lua 5.1: [Lua for windows](https://github.com/rjpcomputing/luaforwindows/releases/tag/v5.1.5-52)
