@@ -1,4 +1,5 @@
 > WARNING: Not recommended for the script which contains secrets. ByteLuaObfuscator is easy to deobfuscate.
+> Use other obfuscator
 # ByteLuaObfuscator
 Simple Lua Bytecode-Method Obfuscator for Lua 5.1+ / RBXLua. <br>
 Obfuscator for Lua 5.1 in Lua. <br>
